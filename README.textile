@@ -1,9 +1,11 @@
 h1. OpenStack Java SDK
 
+Release 1.0-RC3 is compatible with Essex and Folsom.
+
 h2. Maven
 
 |groupId|artifactId|version|
-|org.openstack|openstack-java-sdk|1.0-RC2|
+|org.openstack|openstack-java-sdk|1.0-RC3|
 
 https://raw.github.com/woorea/maven/master/releases/
 
