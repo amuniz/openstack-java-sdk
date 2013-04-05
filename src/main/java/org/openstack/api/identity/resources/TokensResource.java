@@ -12,16 +12,16 @@ import org.openstack.model.identity.Authentication;
 import org.openstack.model.identity.keystone.KeystoneAccess;
 
 public class TokensResource extends Resource {
-	
-	public TokensResource(Target target, Properties properties) {
+
+	public TokensResource(final Target target, final Properties properties) {
 		super(target, properties);
 	}
 
-    public Access post(Authentication authentication) {	
+    public Access post(final Authentication authentication) {
     	return target.request(MediaType.APPLICATION_JSON).post(Entity.json(authentication), KeystoneAccess.class);
     }
-    
-    public <T> T post(Authentication authentication, Class<T> type) {	
+
+    public <T> T post(final Authentication authentication, final Class<T> type) {
     	return target.request(MediaType.APPLICATION_JSON).post(Entity.json(authentication), type);
     }
 

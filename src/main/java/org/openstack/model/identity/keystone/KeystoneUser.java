@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonRootName;
@@ -19,6 +20,7 @@ import org.openstack.model.identity.User;
 @XmlRootElement(name = "user")
 @XmlAccessorType(XmlAccessType.NONE)
 @JsonRootName("user")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class KeystoneUser implements Serializable, User {
 
     @XmlAttribute
@@ -38,10 +40,10 @@ public class KeystoneUser implements Serializable, User {
 
     @XmlAttribute
     private boolean enabled;
-    
+
     @XmlAttribute
     private String tenantId;
-    
+
     @XmlElement(name = "roles")
     @JsonDeserialize(as=List.class, contentAs=KeystoneRole.class)
     private List<Role> roles;
@@ -53,10 +55,10 @@ public class KeystoneUser implements Serializable, User {
     private Map<String, Object> extra;
 
     public KeystoneUser() {
-    	
+
     }
-    
-    public KeystoneUser(String id, String name) {
+
+    public KeystoneUser(final String id, final String name) {
     	this.id = id;
     	this.name = name;
     }
@@ -69,7 +71,7 @@ public class KeystoneUser implements Serializable, User {
         return id;
     }
 
-	public void setId(String id) {
+	public void setId(final String id) {
         this.id = id;
     }
 
@@ -81,7 +83,7 @@ public class KeystoneUser implements Serializable, User {
         return name;
     }
 
-	public void setName(String name) {
+	public void setName(final String name) {
         this.name = name;
     }
 
@@ -93,7 +95,7 @@ public class KeystoneUser implements Serializable, User {
         return password;
     }
 
-	public void setPassword(String password) {
+	public void setPassword(final String password) {
         this.password = password;
     }
 
@@ -105,7 +107,7 @@ public class KeystoneUser implements Serializable, User {
         return email;
     }
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -117,7 +119,7 @@ public class KeystoneUser implements Serializable, User {
         return enabled;
     }
 
-	public void setEnabled(boolean enabled) {
+	public void setEnabled(final boolean enabled) {
         this.enabled = enabled;
     }
 
@@ -129,7 +131,7 @@ public class KeystoneUser implements Serializable, User {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(final String username) {
 		this.username = username;
 	}
 
@@ -137,7 +139,7 @@ public class KeystoneUser implements Serializable, User {
 		return tenantId;
 	}
 
-	public void setTenantId(String tenantId) {
+	public void setTenantId(final String tenantId) {
 		this.tenantId = tenantId;
 	}
 
@@ -145,7 +147,7 @@ public class KeystoneUser implements Serializable, User {
 		return rolesLinks;
 	}
 
-	public void setRolesLinks(List<String> rolesLinks) {
+	public void setRolesLinks(final List<String> rolesLinks) {
 		this.rolesLinks = rolesLinks;
 	}
 
@@ -157,7 +159,7 @@ public class KeystoneUser implements Serializable, User {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(final List<Role> roles) {
 		this.roles = roles;
 	}
 
@@ -165,7 +167,7 @@ public class KeystoneUser implements Serializable, User {
 		return extra;
 	}
 
-	public void setExtra(Map<String, Object> extra) {
+	public void setExtra(final Map<String, Object> extra) {
 		this.extra = extra;
 	}
 

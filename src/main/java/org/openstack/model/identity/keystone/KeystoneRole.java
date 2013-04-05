@@ -7,17 +7,19 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.map.annotate.JsonRootName;
 import org.openstack.model.identity.Role;
 
 @XmlRootElement(name="role")
 @XmlAccessorType(XmlAccessType.NONE)
 @JsonRootName("role")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class KeystoneRole implements Serializable, Role {
-	
+
 	@XmlAttribute
 	private String id;
-	
+
 	@XmlAttribute
 	private String name;
 
@@ -26,12 +28,12 @@ public class KeystoneRole implements Serializable, Role {
 
 	@XmlAttribute
 	private String tenantId;
-	
+
 	public KeystoneRole() {
-		
+
 	}
-	
-	public KeystoneRole(String id, String name) {
+
+	public KeystoneRole(final String id, final String name) {
 		this.id = id;
 		this.name = name;
 	}
@@ -44,7 +46,7 @@ public class KeystoneRole implements Serializable, Role {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(final String id) {
 		this.id = id;
 	}
 
@@ -56,17 +58,17 @@ public class KeystoneRole implements Serializable, Role {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
-	
+
 	//serviceId and tenantId are only in access/user/roles
 
 	public String getServiceId() {
 		return serviceId;
 	}
 
-	public void setServiceId(String serviceId) {
+	public void setServiceId(final String serviceId) {
 		this.serviceId = serviceId;
 	}
 
@@ -74,7 +76,7 @@ public class KeystoneRole implements Serializable, Role {
 		return tenantId;
 	}
 
-	public void setTenantId(String tenantId) {
+	public void setTenantId(final String tenantId) {
 		this.tenantId = tenantId;
 	}
 
@@ -82,6 +84,6 @@ public class KeystoneRole implements Serializable, Role {
 	public String toString() {
 		return "Role [id=" + id + ", name=" + name + "]";
 	}
-	
+
 }
 
